@@ -5,23 +5,30 @@ import "./style.css";
 import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
-window.onload = () => {
+window.onload = function() {
   //write your code here
+  let pronoun = ["the", "his"];
+  let adj = ["great", "big", "little"];
+  let noun = ["jogger", "racoon", "puedes"];
+  let extension = [".com", ".es", ".org"];
 
-  document.querySelector("#excuse").innerHTML = theExcuse();
-  console.log("Hello Rigo from the console!");
-};
+  for (let i = 0; i < pronoun.length; i++) {
+    adj.forEach((adjetivo) => {
+      noun.forEach((nou) => {
+        extension.forEach((ext) => {
+          let ultimaLetrasNoun = nou.slice((ext.length - 1) * -1);
+          let ExtensionSinPunto = ext.slice((ext.length - 1) * -1);
+          let elNounSinLasLetrasDeLaExtension = nou.slice(
+            0,
+            nou.length - (ext.length - 1)
+          );
 
-let theExcuse = () => {
-  let who = ["mi padre", "la tortuga", "el perro", "mi vecino"];
-  let action = ["comio", "rompio", "perdio", "escondio"];
-  let what = ["mi tarea", "la comida", "mi celular", "las llaves"];
-  let when = [ "despues de clases","cuando dormia","cuando me fui","durante el almuerzo","mientras jugaba",];
-
-  let quien = Math.floor(Math.random() * who.length);
-  let accion = Math.floor(Math.random() * action.length);
-  let que = Math.floor(Math.random() * what.length);
-  let cuando = Math.floor(Math.random() * when.length); //
-
-  return who[quien] + " " + action[accion] + " " + what[que] + " " + when[cuando];
+          if (ultimaLetrasNoun == ExtensionSinPunto) {
+            console.log(adjetivo + elNounSinLasLetrasDeLaExtension + ext);
+          }
+          console.log(pronoun[i] + "" + adjetivo + "" + nou + "" + ext);
+        });
+      });
+    });
+  }
 };
